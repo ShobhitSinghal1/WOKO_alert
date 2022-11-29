@@ -5,10 +5,26 @@ import time
 import random
 from bs4 import BeautifulSoup
 import yaml
+from twilio.rest import Client
 
 with open("config.yaml", "r") as opened_file:
     config = yaml.safe_load(opened_file)
 
+
+def call(**kwargs):
+    """
+
+    :param kwargs:
+    :return:
+    """
+    account_sid = config["account_sid"]
+    auth_token = config["auth_token"]
+    client = Client(account_sid, auth_token)
+    call = client.calls.create(
+        twiml='<Response><Say>New room, check website</Say></Response>',
+        to='+41767256824',
+        from_='+17175395380'
+    )
 
 def send_message(**kwargs):
     """
@@ -77,11 +93,13 @@ memory_list = query_all_website()
 while True:
     new_memory_list = query_all_website()
 
-    if memory_list != new_memory_list or config['test']:
-        send_message(**config)
+    if len(memory_list) < len(new_memory_list) or config['test']:
+        # send_message(**config)
+        call(**config)
         print("Found!")
         memory_list = new_memory_list
         sleep()
     else:
         print(f"Still: {len(new_memory_list)} rooms...")
+        memory_list = new_memory_list
         sleep()

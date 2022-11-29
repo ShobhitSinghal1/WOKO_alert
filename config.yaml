@@ -1,6 +1,8 @@
 content: "New WOKO room!"
 receiver_email: "email@gmail.com" # email to send to 
-sender_email: "email@gmail.com" # email to send from 
+sender_email: "email@gmail.com" # email to send from
+account_sid: ""
+auth_token: ""
 password: "app_password" # password of the sender_email email 
 keyword: "Zürich" # Choose between Zürich and Winterthur
 url_woko: "https://www.woko.ch/en/nachmieter-gesucht"
