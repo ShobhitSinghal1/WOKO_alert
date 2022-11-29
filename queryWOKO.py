@@ -19,11 +19,13 @@ def call(**kwargs):
     """
     account_sid = config["account_sid"]
     auth_token = config["auth_token"]
+    from_number = config["from_number"]
+    to_number = config["to_number"]
     client = Client(account_sid, auth_token)
     call = client.calls.create(
         twiml='<Response><Say>New room, check website</Say></Response>',
-        to='+41767256824',
-        from_='+17175395380'
+        to=to_number,
+        from_=from_number
     )
 
 def send_message(**kwargs):

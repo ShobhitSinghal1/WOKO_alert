@@ -1,10 +1,16 @@
-content: "New WOKO room!"
-receiver_email: "email@gmail.com" # email to send to 
-sender_email: "email@gmail.com" # email to send from
+#if using twilio
 account_sid: ""
 auth_token: ""
+from_number: '+'
+to_number: '+'
+
+# if using email
+receiver_email: "email@gmail.com" # email to send to
+sender_email: "email@gmail.com" # email to send from
 password: "app_password" # password of the sender_email email 
 keyword: "Zürich" # Choose between Zürich and Winterthur
+
+content: "New WOKO room!"
 url_woko: "https://www.woko.ch/en/nachmieter-gesucht"
 timer: 120 # in s./ interval to update request
-test: False # toggle for testing if the emailing is actually working
+test: True # toggle for testing if the emailing is actually working
