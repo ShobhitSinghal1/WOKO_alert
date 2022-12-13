@@ -93,15 +93,18 @@ def sleep():
 memory_list = query_all_website()
 
 while True:
-    new_memory_list = query_all_website()
+    try:
+        new_memory_list = query_all_website()
 
-    if len(memory_list) < len(new_memory_list) or config['test']:
-        # send_message(**config)
-        call(**config)
-        print("Found!")
-        memory_list = new_memory_list
-        sleep()
-    else:
-        print(f"Still: {len(new_memory_list)} rooms...")
-        memory_list = new_memory_list
-        sleep()
+        if len(memory_list) < len(new_memory_list) or config['test']:
+            # send_message(**config)
+            call(**config)
+            print("Found!")
+            memory_list = new_memory_list
+            sleep()
+        else:
+            print(f"Still: {len(new_memory_list)} rooms...")
+            memory_list = new_memory_list
+            sleep()
+    except Exception as e:
+        print(f'{e}')
